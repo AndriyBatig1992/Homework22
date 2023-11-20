@@ -21,7 +21,11 @@
                 <a href="/" style="text-decoration: none">Quotes to Scrape</a>
             </h1>
             {% if request.path|is_add_quote_page and user.is_authenticated %}
-            <a class ="add_btn" href="{% url 'quotes:add_quote' %}"> &#8853; ADD QUOTE</a>
+           <ul class="bt_add">
+                <li><a class="add_btn" href="{% url 'quotes:add_quote' %}">&#8853; ADD QUOTE</a></li>
+                <li><a class="add_btn" href="{% url 'quotes:add_tag' %}">&#8853; ADD TAG</a></li>
+                <li><a class="add_btn" href="{% url 'quotes:add_author' %}">&#8853; ADD AUTHOR</a></li>
+           </ul>
             {% endif %}
         </div>
         <div class="col-md-4">

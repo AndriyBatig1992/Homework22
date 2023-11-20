@@ -2,20 +2,12 @@ from django.core.paginator import Paginator
 from .models import Author
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Quote, Tag
-from .forms import QuoteForm
+from .forms import QuoteForm, TagForm, AuthorForm
 from django.db.models import Count
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 
-
-
-# def main(request, page=1):
-#     db = get_mongo_db()
-#     quotes = db.quotes.find()
-#     per_page = 51
-#     paginator = Paginator(list(quotes), per_page)
-#     quotes_on_page = paginator.page(page)
-#     return render(request, 'quotes/index.html', context={'quotes': quotes_on_page})
 
 
 def main(request, page=1):
@@ -52,6 +44,42 @@ def add_quote(request):
     return render(request, 'quotes/add_quote.html', {"tags": tags, 'form': QuoteForm()})
 
 
+@login_required
+def add_tag(request):
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            try:
+                tag = form.save()
+                return redirect('quotes:root')
+            except IntegrityError as err:
+                return render(request, 'quotes/add_tag.html', {'form': form, 'error': f'IntegrityError: {err}'})
+            except ValueError as err:
+                return render(request, 'quotes/add_tag.html', {'form': TagForm(), 'error': err})
+        else:
+            return render(request, 'quotes/add_tag.html', {'form': form, 'error': form.errors})
+    else:
+        return render(request, 'quotes/add_tag.html', {'form': TagForm()})
+
+
+
+@login_required
+def add_author(request):
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('quotes:root')
+            except IntegrityError as err:
+                return render(request, 'quotes/add_author.html', {'form': form, 'error': f'IntegrityError: {err}'})
+            except ValueError as err:
+                return render(request, 'quotes/add_author.html', {'form': AuthorForm(), 'error': err})
+        else:
+            print(f'Form is not valid: {form.errors}')
+            return render(request, 'quotes/add_author.html', {'form': form, 'error': form.errors})
+    else:
+        return render(request, 'quotes/add_author.html', {'form': AuthorForm()})
 
 def author_detail(request, author_id):
     author = get_object_or_404(Author, id=author_id)

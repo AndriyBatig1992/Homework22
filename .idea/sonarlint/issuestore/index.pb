@@ -61,8 +61,6 @@ I
 ,hw_project/users/templates/users/logout.html,a\6\a6b3ce0649415549acd2fa3124b641d3851dc203
 e
 5hw_project/quotes/templates/quotes/author_detail.html,b\8\b8fca1b1e912c4be27e71fdcf87a8e75524596d0
-c
-3hw_project/quotes/templates/quotes/all_authors.html,6\9\69924f29d6933a2780b5205ba24bf202f3ec7c41
 h
 8hw_project/quotes/templates/quotes/author_biography.html,6\2\629b1f136670c5c016f92c4de377615eddb9876f
 J
@@ -73,5 +71,12 @@ d
 4hw_project/quotes/templates/quotes/quote_detail.html,a\a\aa84a12212ef6fac8027ccac0243e0eb83bb5323
 b
 2hw_project/quotes/templates/quotes/tag_detail.html,2\5\250398a93c801cc989ceb680ad5d4af4c48e339b
-e
-5hw_project/quotes/templates/quotes/quote_deleted.html,6\c\6c13236c32a6efa788631e38a20a5a96816faa07
+b
+2hw_project/quotes/templates/quotes/quote_edit.html,1\4\1475ca6302867acfed07a7abecbfaac4d15e7427
+j
+:hw_project/quotes/templates/quotes/quote_edit_deleted.html,1\d\1d6d95df02fc7327cb1d269506f10f8f9bf36930
+\
+,hw_project/quotes/templates/quotes/xlam.html,f\c\fc840e73edf111106095e257ff7be81929d90f30
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
